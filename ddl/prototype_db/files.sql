@@ -1,5 +1,5 @@
 CREATE TABLE files (
-    file_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    file_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
     lowest_level_category_id INT UNSIGNED NOT NULL,
     file_name VARCHAR(1024) NOT NULL,
     FOREIGN KEY lowest_level_category_id(lowest_level_category_id) REFERENCES categories(category_id)
