@@ -7,7 +7,7 @@ prototype_db
 * files
 * descriptions
 
-```docker image build -t dap-db .```
+```docker build -t dap-db .```
 
 ```docker run --name DAP-database -e MYSQL_ROOT_PASSWORD=[your_pw] -d dap-db:latest```
 
