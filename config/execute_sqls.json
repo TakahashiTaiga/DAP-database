@@ -1,0 +1,15 @@
+{
+    "dbconn":{
+        "users":"root"
+    },
+    "databases":{
+        "prototype_db":
+            ["users",
+            "login_sessions",
+            "attribute_sets",
+            "attributes",
+            "categories",
+            "files",
+            "descriptions"]
+    }
+}
