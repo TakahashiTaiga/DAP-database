@@ -1,0 +1,22 @@
+# docker-compose.yml
+version: "3"
+services:
+  dap-database:
+    build:
+      # 使う Dockerfile のあるディレクトリ
+      context: ./ 
+    environment:
+      # rootのパスワード
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      # タイムゾーン
+      - TZ=${APP_TZ:-Asia/Tokyo} 
+    ports:
+      # 外部公開ポート
+      - ${DOCKER_DB_PORT:-13306}:3306
+    volumes:
+      # 名前付きコンテナでデータベースの中身を永続化
+      - db-store:/var/lib/mysql
+    # command:
+      # python3 python/execute_sqls.py
+volumes:
+  db-store:

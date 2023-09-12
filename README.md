@@ -7,12 +7,11 @@ prototype_db
 * files
 * descriptions
 
-```docker build -t dap-db .```
-
-```docker run --name DAP-database -e MYSQL_ROOT_PASSWORD=[your_pw] -d dap-db:latest```
-
-```docker start DAP-database```
-
-```docker exec -it DAP-database bash```
-
+#### commands
 ```mysql -u root -p```
+
+#### enviroment values
+MYSQL_ROOT_PASSWORD=
+APP_TZ=Asia/Tokyo
+DOCKER_DB_PORT=3306
+EXTERNAL_DB_PORT=13306
