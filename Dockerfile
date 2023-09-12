@@ -4,3 +4,5 @@ RUN apt update
 RUN apt install -y python3
 RUN apt install -y python3-pip
 RUN pip install mysql-connector-python
+RUN pip install pyhocon
+RUN pip install python-dotenv

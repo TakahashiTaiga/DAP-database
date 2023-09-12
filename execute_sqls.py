@@ -1,17 +1,27 @@
 import os
 import json
+from pyhocon import ConfigFactory
+from dotenv import load_dotenv
+
 """
 import mysql.connector
 from mysql.connector import errorcode
 """
 
-# read configs
-config_file = open('./config/execute_sqls.json', 'r')
-db_config = json.load(config_file)
-print(db_config)
+# get env for connecting mysql
+load_dotenv()
+mysql_user = os.getenv('MYSQL_USER')
+mysql_root_password = os.getenv('MYSQL_ROOT_PASSWORD')
+print(mysql_user)
+print(mysql_root_password)
 
-# read dbpass
-db_root_pass = os.environ.get('MYSQL_ROOT_PASSWORD')
+# read configs
+conf = ConfigFactory.parse_file('./config/execute_sqls.conf')
+databases = conf['database']
+tables = conf['tables'] 
+
+print(databases)
+print(tables)
 
 """
 try:
