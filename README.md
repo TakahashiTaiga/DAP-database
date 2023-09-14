@@ -1,3 +1,4 @@
+### DBs and tables
 prototype_db
 * users
 * login_sessions
@@ -7,10 +8,14 @@ prototype_db
 * files
 * descriptions
 
-#### commands
-```mysql -u root -p```
+### commands
+#### docker compose
+```docker compose up -d```
 
-#### enviroment values
+#### docker exec
+```docker exec -t dap-database bash```
+
+### enviroment values
 * MYSQL_ROOT_PASSWORD=
 * APP_TZ=Asia/Tokyo
 * DOCKER_DB_PORT=3306

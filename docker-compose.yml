@@ -2,6 +2,7 @@
 version: "3"
 services:
   dap-database:
+    container_name: dap-database
     build:
       # 使う Dockerfile のあるディレクトリ
       context: ./ 
