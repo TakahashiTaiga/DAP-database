@@ -3,7 +3,7 @@ FROM ubuntu/mysql:8.0-22.04_beta
 # create databases
 COPY ./src/ddl/databases/prototype_db.sql /docker-entrypoint-initdb.d/prototype_db.sql
 COPY ./src/container_init.sh /docker-entrypoint-initdb.d/container_init.sh
-COPY ./src /
+COPY ./src /home
 
 # install libraries
 RUN apt update
