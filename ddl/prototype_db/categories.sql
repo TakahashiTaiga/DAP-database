@@ -1,4 +1,4 @@
-CREATE TABLE categories (
+CREATE TABLE categories IF NOT EXISTS(
     category_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
     owner_id INT UNSIGNED NOT NULL,
     attribute_set_id INT UNSIGNED NOT NULL,

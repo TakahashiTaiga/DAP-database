@@ -1,4 +1,4 @@
-CREATE TABLE files (
+CREATE TABLE files IF NOT EXISTS(
     file_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
     lowest_level_category_id INT UNSIGNED NOT NULL,
     file_name VARCHAR(1024) NOT NULL,

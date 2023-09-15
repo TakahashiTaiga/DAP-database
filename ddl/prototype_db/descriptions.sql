@@ -1,4 +1,5 @@
-CREATE TABLE descriptions (
+CREATE TABLE descriptions IF NOT EXISTS
+(
     description_id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
     file_id INT UNSIGNED NOT NULL,
     attribute_id INT UNSIGNED NOT NULL,
