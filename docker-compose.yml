@@ -17,7 +17,5 @@ services:
     volumes:
       # 名前付きコンテナでデータベースの中身を永続化
       - db-store:/var/lib/mysql
-    # command:
-      # python3 src/execute_sqls.py
 volumes:
   db-store:

@@ -13,7 +13,10 @@ prototype_db
 ```docker compose up -d```
 
 #### docker exec
-```docker exec -t dap-database bash```
+```docker exec -t dap-database /bin/bash```
+
+### connect mysql
+```mysql -u root -p```
 
 ### enviroment values
 * MYSQL_ROOT_PASSWORD=

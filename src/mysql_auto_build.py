@@ -1,7 +1,6 @@
 from pyhocon import ConfigFactory
 import execute_sqls
 
-""" main program """
 # read configs
 conf = ConfigFactory.parse_file('./config/execute_sqls.conf')
 
