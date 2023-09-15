@@ -1,6 +1,4 @@
 import os
-import json
-from pyhocon import ConfigFactory
 from dotenv import load_dotenv
 import mysql.connector
 from mysql.connector import errorcode
@@ -44,12 +42,20 @@ class execute_sqls():
     self.mysql_port = os.getenv('DB_PORT')
 
   def connectToMySQL(self):
+    """
+      no arguments required
+      create cnx and cursor
+      cnx and cursor are class values
+    """
     try:
+      # create connect
       self.cnx = mysql.connector.connect(user=self.mysql_user,
                                     password=self.mysql_root_password,
                                     port=self.mysql_port)
+      # create cursor
       self.cursor = self.cnx.cursor()
     
+    # throw error
     except mysql.connector.Error as err:
       if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
         print("Something is wrong with your user name or password")
@@ -59,47 +65,67 @@ class execute_sqls():
         print(err)
 
   def useDB(self, db):
+    """
+      argument: 
+        db  database name for use command
+
+      create and execute use command
+    """
     try:
+      # create use command
       use_db = "USE {};".format(db)
+      # execute use command
       self.cursor.execute(use_db)
+    # throw error
     except mysql.connector.Error as err:
       print(err)
       exit(1)
 
   def openSQLFile(self, db, table):
+    """
+      argument:
+        db    database name
+        table table name
+
+      open sql file of specified db and table
+      retrun the file
+    """
+    # create file path
     path = "ddl/{0}/{1}.sql".format(db, table)
+    # opne file
     with open(path) as f:
       create_table = f.read()
+      # file close before return
       f.close()
+      # return file contents
       return create_table
   
   def createTable(self, db, table):
+    """
+      arguments:
+        db    create table in this db
+        table table created
+
+      get specified sql file contents
+      execute the create table 
+    """
     try:
+      # get sql file contents
       create_table = self.openSQLFile(db, table)
+      # execute create table
       self.cursor.execute(create_table)
+    # throw error
     except mysql.connector.Error as err:
       print("Failed creating database: {}".format(err))
       exit(1)
 
   def closeConnection(self):
+    """
+      no arguments required
+      cnx is a class value
+      close cnx
+      execute_sqls class must use closeConnection at the end of processing
+    """
     self.cnx.close()
       
-      
-""" main program """
-# read configs
-conf = ConfigFactory.parse_file('./config/execute_sqls.conf')
-
-# create instance
-exec_sqls = execute_sqls()
-# connect to MySQL
-exec_sqls.connectToMySQL()
-# execute create tables by the order based on execute_sqls.conf
-for c in conf:
-  db = c
-  table_list = conf[db]
-  execute_sqls.useDB(db)
-  for table in table_list:
-    execute_sqls.createTable(db, table)
-# close connection to MySQL
-exec_sqls.close()
-  
+ 
