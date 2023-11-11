@@ -1,0 +1,16 @@
+# docker-compose.yml
+version: "3"
+services:
+  dap-database:
+    container_name: dap-database
+    build:
+      context: ./ 
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "13306:3306"
+    restart: always
+    volumes:
+      - db-store:/var/lib/mysql
+volumes:
+  db-store:
