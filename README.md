@@ -7,12 +7,11 @@ prototype_db
 * files
 * descriptions
 
-```docker build -t dap-db .```
+### docker compose up
+```docker compose up -d```
 
-```docker run --name DAP-database -e MYSQL_ROOT_PASSWORD=[your_pw] -d dap-db:latest```
+### docker exec
+```docker exec -it dap-database bash```
 
-```docker start DAP-database```
-
-```docker exec -it DAP-database bash```
-
+### connect mysql
 ```mysql -u root -p```
